@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="severitylevel">
+        <item>A+</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
+    <string-array name="frequency">
+        <item>must</item>
+        <item>often</item>
+        <item>Occasional</item>
+        <item>once</item>
+        <item>---</item>
+    </string-array>
+
+    <string-array name="recovery">
+        <item>---</item>
+        <item>不能</item>
+        <item>能</item>
+    </string-array>
+
+    <string-array name="testcases">
+        <item>---</item>
+        <item>无</item>
+        <item>有</item>
+    </string-array>
+
+    <string-array name="testanalysis">
+        <item>---</item>
+        <item>用例遗漏</item>
+        <item>测试遗漏</item>
+        <item>新测试的模块/功能</item>
+        <item>新引入的问题</item>
+        <item>偶现问题</item>
+        <item>需求或体验问题</item>
+        <item>特殊操作或场景</item>
+        <item>三方应用相关场景</item>
+        <item>生产工具问题</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="modulelist">
+        <item>---</item>
+        <item>硬_PCB</item>
+        <item>硬_器件</item>
+        <item>硬_基带</item>
+        <item>硬_射频</item>
+        <item>硬_音频</item>
+        <item>认证</item>
+        <item>充放电</item>
+        <item>功耗</item>
+        <item>可靠性</item>
+        <item>效果专项</item>
+        <item>温升</item>
+        <item>FieldTest</item>
+        <item>CTS</item>
+        <item>Audio</item>
+        <item>BT</item>
+        <item>Camera</item>
+        <item>GPS</item>
+        <item>MobileCommunications</item>
+        <item>Sensor</item>
+        <item>USB</item>
+        <item>WLAN</item>
+        <item>Browser</item>
+        <item>Call</item>
+        <item>Contacts</item>
+        <item>FileManager</item>
+        <item>Gallery</item>
+        <item>GMS</item>
+        <item>HarassmentFilter</item>
+        <item>Language</item>
+        <item>Launcher</item>
+        <item>LockScreen</item>
+        <item>Mail</item>
+        <item>Message</item>
+        <item>Music</item>
+        <item>Settings</item>
+        <item>SystemCompatibility</item>
+        <item>SystemFunction</item>
+        <item>SystemStability</item>
+        <item>SystemUI</item>
+        <item>SystemUpdate</item>
+        <item>Themes</item>
+        <item>Tools</item>
+        <item>Video</item>
+        <item>FactoryTools</item>
+        <item>MR</item>
+        <item>PhoneManager</item>
+        <item>Security</item>
+        <item>Test</item>
+        <item>Undefined</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="buglist">
+        <item>---</item>
+        <item>Debug</item>
+        <item>Risk</item>
+        <item>Function</item>
+        <item>Performance</item>
+        <item>UI</item>
+        <item>Outlook</item>
+        <item>Compatibility</item>
+        <item>Reliability</item>
+        <item>Stability</item>
+        <item>Verification</item>
+        <item>MPT</item>
+        <item>Certification</item>
+        <item>UX</item>
+        <item>Requirement</item>
+    </string-array>
+
+    <string-array name="priority">
+        <item>P1</item>
+        <item>P2</item>
+        <item>P3</item>
+        <item>P4</item>
+    </string-array>
+
+    <string-array name="hardware">
+        <item>---</item>
+        <item>All</item>
+        <item>PC</item>
+        <item>Other</item>
+        <item>MT6735</item>
+        <item>MT6753</item>
+        <item>Qualcomm ARMS</item>
+    </string-array>
+
+    <string-array name="os">
+        <item>---</item>
+        <item>All</item>
+        <item>Android</item>
+        <item>Windows</item>
+        <item>Mac OS</item>
+    </string-array>
+
+</resources>

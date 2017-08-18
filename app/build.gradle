@@ -23,4 +23,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.+'
+    compile 'org.jsoup:jsoup:1.10.3'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
 }

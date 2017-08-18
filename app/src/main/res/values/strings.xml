@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="charger">充电器</string>
+    <string name="factory_tools">工具</string>
+    <string name="mtk_phone">MTK_Phone</string>
+    <string name="qc_phone">QC_Phone</string>
+    <string name="feedback">包含出货手市场反馈的问题</string>
+    <string name="rom">neffos Rom</string>
+    <string name="web">web相关测试</string>
+    <string name="autotest">自动化组内相关自动化工具与平台</string>
 </resources>
