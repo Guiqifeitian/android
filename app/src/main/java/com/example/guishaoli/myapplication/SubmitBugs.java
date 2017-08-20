@@ -3,6 +3,7 @@ package com.example.guishaoli.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -33,6 +37,10 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
     private AutoCompleteTextView autoText;
     private LinearLayout advancedfieldslin;
     private Button attachment;
+    File sdDir;
+    String filename;
+    private Button submit;
+    String cookie;
 
     String[] res = {"appearance","audio","bluetooth","display","earphone","fm","gps","input","memory","multimedia","MVB","pm","reliability","RF","self_test","sensor","sim","software","Speaker","usb","wlan"};
 
@@ -40,6 +48,9 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.submit_bugs);
+
+        Intent intent = getIntent();
+        cookie = intent.getStringExtra("cookie");
 
         testCases = (Spinner) findViewById(R.id.testcase);
         ifRecovery = (Spinner) findViewById(R.id.ifrecovery) ;
@@ -49,7 +60,9 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         autoText = (AutoCompleteTextView) findViewById(R.id.autotextview);
         advancedfieldslin = (LinearLayout) findViewById(R.id.advancedfieldslin);
         attachment = (Button) findViewById(R.id.attachment);
+        submit = (Button) findViewById(R.id.submit);
 
+        assert submit != null;
         assert attachment != null;
         assert advancedfieldslin != null;
         assert autoText != null;
@@ -59,6 +72,7 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
 
         advancedFieldsBtn.setOnClickListener(this);
         attachment.setOnClickListener(this);
+        submit.setOnClickListener(this);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,res);
         autoText.setAdapter(adapter);
@@ -115,7 +129,9 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
                 case R.id.attachment:
                     chooseFile();
                     break;
-
+                case R.id.submit:
+                    postFileWithParams(filename);
+                    break;
             }
     }
 
@@ -140,21 +156,56 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         if (requestCode == 0) {
             Uri uri = data.getData();
             Log.i("file", "------->" + uri.getPath());
+            filename = uri.getPath().toString();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void postFileWithParams(String url,String params,File file){
-        OkHttpClient client = new OkHttpClient();
-        MultipartBody.Builder requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM);
-        if(file != null){
-            // MediaType.parse() 里面是上传的文件类型。
-            RequestBody body = RequestBody.create(MediaType.parse("image/*"), file);
-            String filename = file.getName();
-            // 参数分别为， 请求key ，文件名称 ， RequestBody
-            requestBody.addFormDataPart("headImage", file.getName(), body);
+    private void postFileWithParams(final String filename){
+        sdDir = null;
+        boolean sdCardExist = Environment.getExternalStorageState()
+                .equals(Environment.MEDIA_MOUNTED);   //判断sd卡是否存在
+        if(sdCardExist) {
+            sdDir = Environment.getExternalStorageDirectory();//获取跟目录
         }
+        final HashMap<String,String> map = new HashMap<String,String>();
+        map.put("product","test_pro");
+        map.put("version","unspecified");
+        map.put("cf_module","Undefined");
+        map.put("cf_bugcategory","Function");
+        map.put("cf_applynumber","");
+        map.put("bug_severity","B");
+        map.put("cf_reproduce","must");
+        map.put("cf_recoverable","---");
+        map.put("cf_testcase","无");
+        map.put("cf_reproducesteps","无");
+        map.put("cf_testresult","无");
+        map.put("cf_expectresult","无");
+        map.put("cf_testanalysis","---");
+        map.put("cf_bugimpact","无");
+        map.put("op_sys","Windows");
+        map.put("priority","P3");
+        map.put("assigned_to","leixuelian@tp-link.com.cn");
+        map.put("rep_platform","PC");
+        map.put("short_desc","nothing");
+        map.put("component","ProductID_1_Comp");
+        map.put("token","");
+        new Thread(){
+            @Override
+            public void run() {
+                FileUploader.upload("https://rdmobilebugzilla.tp-link.com.cn:8008/post_bug.cgi", new File(filename), map, new FileUploader.FileUploadListener() {
+                    @Override
+                    public void onProgress(long pro, double precent) {
+                        Log.i("cky", precent+"");
+                    }
 
+                    @Override
+                    public void onFinish(int code, String res, Map<String, List<String>> headers) {
+                        Log.i("cky", res);
+                    }
+                },cookie);
+            }
+        }.start();
     }
 
 

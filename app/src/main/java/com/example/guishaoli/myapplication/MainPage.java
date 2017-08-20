@@ -22,6 +22,7 @@ import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;
@@ -33,10 +34,11 @@ import javax.net.ssl.X509TrustManager;
 
 public class MainPage extends AppCompatActivity {
 
-    TextView responseText;
-    String username;
-    String password;
-    Button fileBugs;
+    private TextView responseText;
+    private String username;
+    private String password;
+    private Button fileBugs;
+    ArrayList<String> response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,7 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainPage.this,FileBugs.class);
+                intent.putExtra("cookie",response.get(0));
                 startActivity(intent);
             }
         });
@@ -73,71 +76,74 @@ public class MainPage extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpsURLConnection connection = null;
-                BufferedReader reader = null;
-                try{
-                    //https://rdmobilebugzilla.tp-link.com.cn:8008/
-                    URL url = new URL("https://rdmobilebugzilla.tp-link.com.cn:8008/");
-                    SSLContext sc = SSLContext.getInstance("TLS");
-                    sc.init(null,new TrustManager[]{new MyTrustManager()},new SecureRandom());
-                    HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-                    HttpsURLConnection.setDefaultHostnameVerifier(new MyHostnameVerifier());
-                    connection = (HttpsURLConnection) url.openConnection();
-                    connection.setRequestProperty("Connection","keep-alive");
-                    connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
-
-                    String params = "Bugzilla_login="+ URLEncoder.encode(username, "UTF-8")+"&Bugzilla_password="+URLEncoder.encode(password, "UTF-8")
-                            +"&GoAheadAndLogIn="+URLEncoder.encode("Log+in", "UTF-8");
-
-                    connection.setRequestMethod("POST");
-                    connection.setConnectTimeout(8000);
-                    connection.setReadTimeout(8000);
-                    connection.setDoInput(true);
-                    connection.setDoOutput(true);
-
-                    OutputStream out = connection.getOutputStream();
-                    out.write(params.getBytes("utf-8"));
-                    out.flush();
-                    out.close();
-
-                    List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
-
-                    String sumcookie = "";
-                    if(!(cookies == null || cookies.isEmpty())){
-                        for(String cookie:cookies){
-                            if(sumcookie.isEmpty()){
-                                sumcookie = cookie.split(";")[0];
-                            }else{
-                                sumcookie += ";"+cookie.split(";")[0];
-                            }
-                            Log.d("mcookie",cookie.split(";")[0]);
-                        }
-                        Log.d("cookie",sumcookie);
-                    }
-
-                    InputStream in = connection.getInputStream();
-
-                    reader = new BufferedReader(new InputStreamReader(in));
-                    StringBuilder response = new StringBuilder();
-                    String line;
-                    while((line = reader.readLine()) != null){
-                        response.append(line);
-                    }
-                    showResponse(response.toString());
-                }catch(Exception e){
-                    e.printStackTrace();
-                }finally {
-                    if (reader != null){
-                        try{
-                            reader.close();
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
-                    }
-                    if(connection != null){
-                        connection.disconnect();
-                    }
-                }
+                SendUrlConnectionUtils a = new SendUrlConnectionUtils();
+                response = a.sendRequestWithHttpsURLConnection("https://rdmobilebugzilla.tp-link.com.cn:8008/",username,password);
+                showResponse(response.get(1));
+//                HttpsURLConnection connection = null;
+//                BufferedReader reader = null;
+//                try{
+//                    //https://rdmobilebugzilla.tp-link.com.cn:8008/
+//                    URL url = new URL("https://rdmobilebugzilla.tp-link.com.cn:8008/");
+//                    SSLContext sc = SSLContext.getInstance("TLS");
+//                    sc.init(null,new TrustManager[]{new MyTrustManager()},new SecureRandom());
+//                    HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//                    HttpsURLConnection.setDefaultHostnameVerifier(new MyHostnameVerifier());
+//                    connection = (HttpsURLConnection) url.openConnection();
+//                    connection.setRequestProperty("Connection","keep-alive");
+//                    connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+//
+//                    String params = "Bugzilla_login="+ URLEncoder.encode(username, "UTF-8")+"&Bugzilla_password="+URLEncoder.encode(password, "UTF-8")
+//                            +"&GoAheadAndLogIn="+URLEncoder.encode("Log+in", "UTF-8");
+//
+//                    connection.setRequestMethod("POST");
+//                    connection.setConnectTimeout(8000);
+//                    connection.setReadTimeout(8000);
+//                    connection.setDoInput(true);
+//                    connection.setDoOutput(true);
+//
+//                    OutputStream out = connection.getOutputStream();
+//                    out.write(params.getBytes("utf-8"));
+//                    out.flush();
+//                    out.close();
+//
+//                    List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
+//
+//                    String sumcookie = "";
+//                    if(!(cookies == null || cookies.isEmpty())){
+//                        for(String cookie:cookies){
+//                            if(sumcookie.isEmpty()){
+//                                sumcookie = cookie.split(";")[0];
+//                            }else{
+//                                sumcookie += ";"+cookie.split(";")[0];
+//                            }
+//                            Log.d("mcookie",cookie.split(";")[0]);
+//                        }
+//                        Log.d("cookie",sumcookie);
+//                    }
+//
+//                    InputStream in = connection.getInputStream();
+//
+//                    reader = new BufferedReader(new InputStreamReader(in));
+//                    StringBuilder response = new StringBuilder();
+//                    String line;
+//                    while((line = reader.readLine()) != null){
+//                        response.append(line);
+//                    }
+//                    showResponse(response.toString());
+//                }catch(Exception e){
+//                    e.printStackTrace();
+//                }finally {
+//                    if (reader != null){
+//                        try{
+//                            reader.close();
+//                        }catch (IOException e){
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                    if(connection != null){
+//                        connection.disconnect();
+//                    }
+//                }
             }
         }).start();
     }
@@ -155,6 +161,10 @@ public class MainPage extends AppCompatActivity {
 
     private void loginResult(String response){
         String title = HtmlParseUtils.getTitle(response).trim();
+        ArrayList<String> bugzillabody = HtmlParseUtils.getBugItems(response);
+        for(int i = 0;i<bugzillabody.size();i++){
+            Log.d(String.valueOf(i),bugzillabody.get(i));
+        }
         if(title.equals("Invalid Username Or Password")){
             responseText.setText(title);
         }else{
