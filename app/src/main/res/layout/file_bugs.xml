@@ -391,13 +391,13 @@
         android:layout_width="match_parent"
         android:text="@string/rom"/>
 
-    <TextView
+    <Button
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="rom2.0"
         android:gravity="center"/>
 
-    <TextView
+    <Button
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="rom2.1"
@@ -409,25 +409,26 @@
         android:layout_width="match_parent"
         android:text="@string/web"/>
 
-    <TextView
+    <Button
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="FileDist"
         android:gravity="center"/>
 
-    <TextView
+    <Button
+        android:id="@+id/fota"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="FOTA"
         android:gravity="center"/>
 
-    <TextView
+    <Button
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="ManagementSystem"
         android:gravity="center"/>
 
-    <TextView
+    <Button
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="UEProject"
@@ -439,7 +440,8 @@
         android:layout_width="match_parent"
         android:text="@string/autotest"/>
 
-    <TextView
+    <Button
+        android:id="@+id/QC"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="QualityCenter"
@@ -453,10 +455,10 @@
         android:gravity="center"/>
 
     <Button
-        android:id="@+id/test_proc"
+        android:id="@+id/test_c"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="test_proc"
+        android:text="test_c"
         android:gravity="center"
         />
 

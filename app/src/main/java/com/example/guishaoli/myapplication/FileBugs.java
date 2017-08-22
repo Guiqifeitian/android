@@ -1,6 +1,7 @@
 package com.example.guishaoli.myapplication;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;
@@ -32,23 +34,36 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
     private Button testpecker;
     private Button test_proc;
     private String cookie;
+    private Button fota;
+    private Button qc;
+
+    private HashMap<Integer,String> buttonMaps = new HashMap<Integer, String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.file_bugs);
 
+        buttonMaps.put(R.id.test_c,"https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?sortation=test_c");
+        //buttonMaps.put(R.id.,"");
+
+
         Intent intent = getIntent();
         cookie = intent.getStringExtra("cookie");
 
         testpecker = (Button) findViewById(R.id.testpecker);
-        test_proc = (Button) findViewById(R.id.test_proc);
+        test_proc = (Button) findViewById(R.id.test_c);
+        fota = (Button) findViewById(R.id.fota);
+        qc = (Button) findViewById(R.id.QC);
 
         assert test_proc != null;
         assert  testpecker != null;
 
         testpecker.setOnClickListener(this);
         test_proc.setOnClickListener(this);
+        fota.setOnClickListener(this);
+        qc.setOnClickListener(this);
 
         sendRequestWithHttpsURLConnection();
 
@@ -60,12 +75,26 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
             case R.id.testpecker:
                 Intent intent1 = new Intent(FileBugs.this,SubmitBugs.class);
                 intent1.putExtra("cookie",cookie);
+                intent1.putExtra("uri","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?product=TestPecker");
                 startActivity(intent1);
                 break;
-            case R.id.test_proc:
+            case R.id.test_c:
                 Intent intent2 = new Intent(FileBugs.this,SubmitBugs.class);
                 intent2.putExtra("cookie",cookie);
+                intent2.putExtra("uri","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?sortation=test_c");
                 startActivity(intent2);
+                break;
+            case R.id.fota:
+                Intent intent3 = new Intent(this,SubmitBugs.class);
+                intent3.putExtra("cookie",cookie);
+                intent3.putExtra("uri","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?product=FOTA");
+                startActivity(intent3);
+                break;
+            case R.id.QC:
+                Intent intent4 = new Intent(this,SubmitBugs.class);
+                intent4.putExtra("cookie",cookie);
+                intent4.putExtra("uri","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?product=QualityCenter");
+                startActivity(intent4);
                 break;
             default:
                 break;

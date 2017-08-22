@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Message;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.LogRecord;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -96,8 +99,9 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
 
         Intent intent = getIntent();
         cookie = intent.getStringExtra("cookie");
+        String uri = intent.getStringExtra("uri");
         Log.d("cookie",cookie);
-        sendRequestWithHttpsURLConnec();
+        sendRequestWithHttpsURLConnec(uri);
         setContentView(R.layout.submit_bugs);
 
         testCases = (Spinner) findViewById(R.id.cf_testcase);
@@ -148,11 +152,11 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
             Log.d("yes","it is true");
         }
         String[] arr = {"unspecified"};
-      arr_adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, versionlist);
+//      arr_adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, versionlist);
 //
 //        //arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //
-       version.setAdapter(arr_adapter);
+//       version.setAdapter(arr_adapter);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,res);
         autoText.setAdapter(adapter);
@@ -356,7 +360,24 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         }.start();
     }
 
-    private void sendRequestWithHttpsURLConnec(){
+    private Handler handler = new Handler() {
+
+        public void handleMessage(Message message){
+            switch(message.what){
+                case 0:
+                    for(String each:versionlist){
+                        Log.d("version",each);
+                    };
+                    arr_adapter= new ArrayAdapter<String>(SubmitBugs.this, android.R.layout.simple_spinner_item, versionlist);
+
+                    version.setAdapter(arr_adapter);
+                break;
+
+            }
+        }
+    };
+
+    private void sendRequestWithHttpsURLConnec(final String uri){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -364,8 +385,8 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
                 HttpsURLConnection connection = null;
                 BufferedReader reader = null;
                 try{
-                    //https://rdmobilebugzilla.tp-link.com.cn:8008/
-                    URL url = new URL("https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?sortation=test_c");
+                    //"https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?sortation=test_c"
+                    URL url = new URL(uri);
                     SSLContext sc = SSLContext.getInstance("TLS");
                     sc.init(null,new TrustManager[]{new MyTrustManager()},new SecureRandom());
                     HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
@@ -397,6 +418,10 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
                         response.append(line);
                     }
                     showResponse(response.toString());
+                    Message msg = Message.obtain();
+                    msg.what = 0;
+                    msg.obj = response.toString();
+                    handler.sendMessage(msg);
                     Log.d("end",response.toString());
                 }catch(Exception e){
                     e.printStackTrace();
@@ -441,9 +466,9 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         Log.d("token",token);
         Log.d("component",component);
         Log.d("product",product);
-        for(String each:versionlist){
-            Log.d("version",each);
-        }
+//        for(String each:versionlist){
+//            Log.d("version",each);
+//        };
     }
 
     private class MyHostnameVerifier implements HostnameVerifier {
