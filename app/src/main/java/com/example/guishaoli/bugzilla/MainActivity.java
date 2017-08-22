@@ -1,4 +1,4 @@
-package com.example.guishaoli.myapplication;
+package com.example.guishaoli.bugzilla;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,24 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.security.SecureRandom;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
-import java.util.List;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+import com.example.guishaoli.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
         assert username != null;
         assert password != null;
         assert bugbutton != null;
-
-        username.setText("guishaoli@tp-link.com.cn");
-        password.setText("0429brysj");
 
         bugbutton.setOnClickListener(new View.OnClickListener() {
             @Override

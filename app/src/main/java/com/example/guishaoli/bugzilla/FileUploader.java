@@ -1,4 +1,4 @@
-package com.example.guishaoli.myapplication;
+package com.example.guishaoli.bugzilla;
 
 import android.util.Log;
 
@@ -44,48 +44,58 @@ public class FileUploader {
             conn.setDoInput(true); //允许输入流
             conn.setDoOutput(true); //允许输出流
             conn.setUseCaches(false); //不允许使用缓存
+
+            /** * 当文件不为空，把文件包装并且上传 */
+            OutputStream outputSteam=conn.getOutputStream();
+            DataOutputStream dos = new DataOutputStream(outputSteam);
+            StringBuffer sb = new StringBuffer();
+            sb.append(LINE_END);
+            if(params!=null){//根据格式，开始拼接文本参数
+                for(Map.Entry<String,String> entry:params.entrySet()){
+                    sb.append(PREFIX).append(BOUNDARY).append(LINE_END);//分界符
+                    sb.append("Content-Disposition: form-data; name=\"" + entry.getKey() + "\"" + LINE_END);
+                    sb.append("Content-Type: text/plain; charset=" + CHARSET + LINE_END);
+                    sb.append("Content-Transfer-Encoding: 8bit" + LINE_END);
+                    sb.append(LINE_END);
+                    sb.append(entry.getValue());
+                    sb.append(LINE_END);//换行！
+                }
+            }
+            dos.write(sb.toString().getBytes());
+
+
             if(file!=null) {
-                /** * 当文件不为空，把文件包装并且上传 */
-                OutputStream outputSteam=conn.getOutputStream();
-                DataOutputStream dos = new DataOutputStream(outputSteam);
-                StringBuffer sb = new StringBuffer();
-                sb.append(LINE_END);
-                if(params!=null){//根据格式，开始拼接文本参数
-                    for(Map.Entry<String,String> entry:params.entrySet()){
-                        sb.append(PREFIX).append(BOUNDARY).append(LINE_END);//分界符
-                        sb.append("Content-Disposition: form-data; name=\"" + entry.getKey() + "\"" + LINE_END);
-                        sb.append("Content-Type: text/plain; charset=" + CHARSET + LINE_END);
-                        sb.append("Content-Transfer-Encoding: 8bit" + LINE_END);
-                        sb.append(LINE_END);
-                        sb.append(entry.getValue());
-                        sb.append(LINE_END);//换行！
+                    StringBuffer sb2 = new StringBuffer();
+                    sb2.append(PREFIX);//开始拼接文件参数
+                    sb2.append(BOUNDARY);
+                    sb.append(LINE_END);
+
+                    /**
+                     * 这里重点注意：
+                     * name里面的值为服务器端需要key 只有这个key 才可以得到对应的文件
+                     * filename是文件的名字，包含后缀名的 比如:abc.png
+                     */
+                    sb2.append("Content-Disposition: form-data; name=\"data\"; filename=\"" + file.getName() + "\"" + LINE_END);
+                    sb2.append("Content-Type: application/octet-stream; charset=" + CHARSET + LINE_END);
+                    sb2.append(LINE_END);
+                    //写入文件数据
+                    dos.write(sb2.toString().getBytes());
+                    InputStream is = new FileInputStream(file);
+                    byte[] bytes = new byte[1024];
+                    long totalbytes = file.length();
+                    long curbytes = 0;
+                    Log.i("cky", "total=" + totalbytes);
+                    int len = 0;
+                    while ((len = is.read(bytes)) != -1) {
+                        curbytes += len;
+                        dos.write(bytes, 0, len);
+                        listener.onProgress(curbytes, 1.0d * curbytes / totalbytes);
                     }
-                }
-                sb.append(PREFIX);//开始拼接文件参数
-                sb.append(BOUNDARY); sb.append(LINE_END);
-                /**
-                 * 这里重点注意：
-                 * name里面的值为服务器端需要key 只有这个key 才可以得到对应的文件
-                 * filename是文件的名字，包含后缀名的 比如:abc.png
-                 */
-                sb.append("Content-Disposition: form-data; name=\"data\"; filename=\""+file.getName()+"\""+LINE_END);
-                sb.append("Content-Type: application/octet-stream; charset="+CHARSET+LINE_END);
-                sb.append(LINE_END);
-                //写入文件数据
-                dos.write(sb.toString().getBytes());
-                InputStream is = new FileInputStream(file);
-                byte[] bytes = new byte[1024];
-                long totalbytes = file.length();
-                long curbytes = 0;
-                Log.i("cky","total="+totalbytes);
-                int len = 0;
-                while((len=is.read(bytes))!=-1){
-                    curbytes += len;
-                    dos.write(bytes, 0, len);
-                    listener.onProgress(curbytes,1.0d*curbytes/totalbytes);
-                }
-                is.close();
-                dos.write(LINE_END.getBytes());//一定还有换行
+                    is.close();
+                    dos.write(LINE_END.getBytes());//一定还有换行
+            }
+
+
                 byte[] end_data = (PREFIX+BOUNDARY+PREFIX+LINE_END).getBytes();
                 dos.write(end_data);
                 dos.flush();
@@ -101,7 +111,7 @@ public class FileUploader {
                     sb.append(line);
                 }
                 listener.onFinish(code,sb.toString(),conn.getHeaderFields());
-            }
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

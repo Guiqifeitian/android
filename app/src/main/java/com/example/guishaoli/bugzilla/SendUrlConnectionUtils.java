@@ -1,4 +1,4 @@
-package com.example.guishaoli.myapplication;
+package com.example.guishaoli.bugzilla;
 
 import android.util.Log;
 

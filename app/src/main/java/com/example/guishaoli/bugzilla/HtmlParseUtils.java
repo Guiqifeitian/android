@@ -1,4 +1,4 @@
-package com.example.guishaoli.myapplication;
+package com.example.guishaoli.bugzilla;
 
 import android.provider.DocumentsContract;
 import android.util.Log;
@@ -79,6 +79,17 @@ public class HtmlParseUtils {
         return title.split(" ")[2];
     }
 
+    public static String getAssignee(String hmtl){
 
+        String pattern = "initialowners....=.\"(\\w+)..40tp";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(hmtl);
+        if (m.find()) {
+            return m.group(1) + "@tp-link.com.cn";
+        } else {
+            return "error";
+        }
+
+    }
 
 }

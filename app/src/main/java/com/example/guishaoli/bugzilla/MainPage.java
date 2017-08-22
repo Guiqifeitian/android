@@ -1,4 +1,4 @@
-package com.example.guishaoli.myapplication;
+package com.example.guishaoli.bugzilla;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,15 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import com.example.guishaoli.myapplication.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
@@ -168,7 +166,7 @@ public class MainPage extends AppCompatActivity {
             responseText.setText(title);
         }else{
             fileBugs.setVisibility(View.VISIBLE);
-            responseText.setText(response);
+            //responseText.setText(response);
         }
     }
 

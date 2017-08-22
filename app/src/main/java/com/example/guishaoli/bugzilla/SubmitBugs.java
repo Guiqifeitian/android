@@ -1,9 +1,10 @@
-package com.example.guishaoli.myapplication;
+package com.example.guishaoli.bugzilla;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Looper;
 import android.os.Message;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.guishaoli.myapplication.R;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +29,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -34,7 +36,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.LogRecord;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -42,11 +43,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 
 public class SubmitBugs extends AppCompatActivity implements View.OnClickListener{
 
@@ -59,7 +55,7 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
     private LinearLayout advancedfieldslin;
     private Button attachment;
     File sdDir;
-    String filename;
+    public String filename = null;
     private Button submit;
     String cookie;
     String token;
@@ -67,6 +63,7 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
     String product;
     ArrayList<String> versionlist;
     ArrayAdapter<String> arr_adapter;
+    String assignee;
 
     private Spinner version;
     private Spinner cf_module;
@@ -148,10 +145,10 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         submit.setOnClickListener(this);
 
 
-        if(versionlist == null){
-            Log.d("yes","it is true");
-        }
-        String[] arr = {"unspecified"};
+//        if(versionlist == null){
+//            Log.d("yes","it is true");
+//        }
+//        String[] arr = {"unspecified"};
 //      arr_adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, versionlist);
 //
 //        //arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -197,8 +194,6 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
 
 
 
-
-
     }
 
     @Override
@@ -215,7 +210,11 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
                     chooseFile();
                     break;
                 case R.id.submit:
-                    postFileWithParams(filename,joinParams());
+                    if(filename == null){
+                        postFileWithParams(null,joinParams());
+                    }else{
+                        postFileWithParams(filename,joinParams());
+                    }
                     break;
             }
     }
@@ -276,15 +275,17 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         map.put("cf_bugimpact",cf_bugimpact.getText().toString());
         map.put("comment",comment.getText().toString());
 
-        map.put("description","1");
-        map.put("contenttypemethod","autodetect");
+        if(!(filename== null)){
+            map.put("description","file");
+            map.put("contenttypemethod","autodetect");
+        }
         map.put("contenttypeselection","text/plain");
         map.put("contenttypeentry","");
         map.put("cc","");
-        map.put("assigned_to","leixuelian@tp-link.com.cn");
+        map.put("assigned_to",assignee);
         map.put("op_sys","Windows");
         map.put("blocked","");
-        map.put("keywords","input");
+        map.put("keywords","");
         map.put("dependson","");
         map.put("priority","P3");
         map.put("rep_platform","PC");
@@ -298,67 +299,59 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         if(sdCardExist) {
             sdDir = Environment.getExternalStorageDirectory();//获取跟目录
         }
-        //final HashMap<String,String> map = new HashMap<String,String>();
-//        map.put("product","test_pro");
-//        map.put("token",token);
-//        map.put("component","ProductID_1_Comp");
-//        map.put("version","unspecified");
-//        map.put("cf_module","Undefined");
-//        map.put("cf_bugcategory","Function");
-//        map.put("cf_applynumber","");
-//        map.put("short_desc","nothing12");
-//        map.put("bug_severity","B");
-//        map.put("cf_reproduce","must");
-//        map.put("cf_accident","");
-//        map.put("cf_recoverable","不能");
-//        map.put("cf_recovercondition","");
-//        map.put("cf_testcase","无");
-//        map.put("cf_casename","");
-//        map.put("cf_testtop","");
-//        map.put("cf_accompanydevice","");
-//        map.put("cf_reproducesteps","无");
-//        map.put("cf_testresult","无");
-//        map.put("cf_expectresult","无");
-//        map.put("cf_comparetest","");
-//        map.put("cf_problemproducts","");
-//        map.put("cf_testanalysis","用例遗漏");
-//        map.put("cf_othertestanalysis","");
-//        map.put("cf_bugimpact","无");
-//        map.put("comment","无");
-//
-//        map.put("description","1");
-//        map.put("contenttypemethod","autodetect");
-//        map.put("contenttypeselection","text/plain");
-//        map.put("contenttypeentry","");
-//        map.put("cc","");
-//        map.put("assigned_to","leixuelian@tp-link.com.cn");
-//        map.put("op_sys","Windows");
-//        map.put("blocked","");
-//        map.put("keywords","input");
-//        map.put("dependson","");
-//        map.put("priority","P3");
-//        map.put("rep_platform","PC");
+
+        if(filename== null){
+            new Thread(){
+                @Override
+                public void run() {
+
+                    FileUploader.upload("https://rdmobilebugzilla.tp-link.com.cn:8008/post_bug.cgi", null, map, new FileUploader.FileUploadListener() {
+                        @Override
+                        public void onProgress(long pro, double precent) {
+                            Log.i("cky", precent+"");
+                        }
+
+                        @Override
+                        public void onFinish(int code, String res, Map<String, List<String>> headers) {
+                            Log.i("cky", res);
+
+                            if(res.charAt(0) == '<'){
+                                String title = HtmlParseUtils.getTitle(res);
+                                Looper.prepare();
+                                Toast.makeText(SubmitBugs.this,title,Toast.LENGTH_SHORT).show();
+                                Looper.loop();
+                            }
+                        }
+                    },cookie);
+                }
+            }.start();
+        }else {
+            new Thread(){
+                @Override
+                public void run() {
+
+                    FileUploader.upload("https://rdmobilebugzilla.tp-link.com.cn:8008/post_bug.cgi", new File(filename), map, new FileUploader.FileUploadListener() {
+                        @Override
+                        public void onProgress(long pro, double precent) {
+                            Log.i("cky", precent+"");
+                        }
+
+                        @Override
+                        public void onFinish(int code, String res, Map<String, List<String>> headers) {
+                            Log.i("cky", res);
+                        }
+                    },cookie);
+                }
+            }.start();
+        }
 
 
-
-
-        new Thread(){
-            @Override
-            public void run() {
-                FileUploader.upload("https://rdmobilebugzilla.tp-link.com.cn:8008/post_bug.cgi", new File(filename), map, new FileUploader.FileUploadListener() {
-                    @Override
-                    public void onProgress(long pro, double precent) {
-                        Log.i("cky", precent+"");
-                    }
-
-                    @Override
-                    public void onFinish(int code, String res, Map<String, List<String>> headers) {
-                        Log.i("cky", res);
-                    }
-                },cookie);
-            }
-        }.start();
     }
+
+    private void postParams(){
+
+    }
+
 
     private Handler handler = new Handler() {
 
@@ -366,8 +359,8 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
             switch(message.what){
                 case 0:
                     for(String each:versionlist){
-                        Log.d("version",each);
-                    };
+                    Log.d("version",each);
+                };
                     arr_adapter= new ArrayAdapter<String>(SubmitBugs.this, android.R.layout.simple_spinner_item, versionlist);
 
                     version.setAdapter(arr_adapter);
@@ -463,6 +456,7 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         component = HtmlParseUtils.getComponent(response);
         product = HtmlParseUtils.getProduct(response);
         versionlist = HtmlParseUtils.getVersionList(response);
+        assignee = HtmlParseUtils.getAssignee(response);
         Log.d("token",token);
         Log.d("component",component);
         Log.d("product",product);

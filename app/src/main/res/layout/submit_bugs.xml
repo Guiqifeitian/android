@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Version"
+            android:textColor="@color/colorAccent"
             />
 
         <Spinner
@@ -38,13 +39,14 @@
         android:orientation="horizontal">
 
         <TextView
-
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Module"
             />
 
         <Spinner
+
             android:id="@+id/cf_module"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,7 +60,7 @@
         android:orientation="horizontal">
 
         <TextView
-
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Bug类别"
@@ -78,7 +80,7 @@
         android:orientation="horizontal">
 
         <TextView
-
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Summary"
@@ -181,6 +183,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="测试用例"
@@ -261,6 +264,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="重现步骤"
@@ -280,6 +284,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="测试结果"
@@ -299,6 +304,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="期望结果"
@@ -376,6 +382,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="测试分析"
@@ -396,6 +403,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="影响评估"
@@ -435,6 +443,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:enabled="false"
             android:id="@+id/advancedfields"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

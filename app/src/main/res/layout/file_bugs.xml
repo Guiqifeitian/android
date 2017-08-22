@@ -12,455 +12,875 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/charger"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/charger"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="BYD的 BF1550芯片"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="903快充充电器"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="NO50200-2B3:手机充电器5V2A"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="NO50200-2C3:手机充电器5V2A"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="NO50200-2D3:英规手机充电器5V2A"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="NO50100-2B3 1.0"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="NO50100-2C3 1.0"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="NO50100-2D3 1.0"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="NO50100-2G3 1.0"
-        android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/factory_tools"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/factory_tools"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:FactoryKit单板测试和整机测试"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:runtime"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:SMT工位测试"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:WIFI测试工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:下载工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:MTK平台写国家码工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:写码工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:天线耦合测试工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:工位检测与信息核对工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:数据库管理工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:整机电流测试工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:板级写码工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK:金机校线损，校准，综测的测试"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:MMI"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:Runtime"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:SMT工位检测"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:生产工具相关"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:WIFI测试工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:下载工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:写国家码工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:写码工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:天线耦合测试工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:工位检测与信息核对工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:数据库管理工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:整机电流测试工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:板级写码工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:校准工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Qualcomm:综测工具"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/mtk_phone"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/mtk_phone"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6580"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6735"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6750:TP904"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6750:TP910"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6750:TP912"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6753"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6755:TP902"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6755:TP902C南美版"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6755:TP903"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6755:TP903C南美版"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MTK6757"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/qc_phone"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/qc_phone"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MSM8209"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="MSM8909"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/feedback"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/feedback"
-        android:gravity="center"/>
-
-
-    <TextView
-        android:id="@+id/rom"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/rom"/>
-
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="rom2.0"
-        android:gravity="center"/>
-
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="rom2.1"
-        android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/web"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/web"/>
-
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="FileDist"
-        android:gravity="center"/>
-
-    <Button
-        android:id="@+id/fota"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="FOTA"
-        android:gravity="center"/>
-
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="ManagementSystem"
-        android:gravity="center"/>
-
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="UEProject"
-        android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/autotest"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/autotest"/>
+    <!-- charger -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/charger"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/charger"/>
+
+        <Button
+            android:id="@+id/byd"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="BYD的 BF1550芯片"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/quickcharge"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="903快充充电器"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/B3charger"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="NO50200-2B3:手机充电器5V2A"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/C3charger"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="NO50200-2C3:手机充电器5V2A"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/D3charger"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="NO50200-2D3:英规手机充电器5V2A"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/B31"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="NO50100-2B3 1.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/C31"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="NO50100-2C3 1.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/D31"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="NO50100-2D3 1.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/G31"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="NO50100-2G3 1.0"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- factory_tools-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/factory_tools"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/factory_tools"/>
+
+        <Button
+            android:id="@+id/fackit"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:FactoryKit单板测试和整机测试"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkrun"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:runtime"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtksmt"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:SMT工位测试"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkwifi"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:WIFI测试工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkdown"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:下载工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtknation"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:MTK平台写国家码工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkwrite"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:写码工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkline"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:天线耦合测试工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtktool"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:工位检测与信息核对工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkdatabase"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:数据库管理工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkelectric"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:整机电流测试工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkboard"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:板级写码工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtkcalibration"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK:金机校线损，校准，综测的测试"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:MMI"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:Runtime"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:SMT工位检测"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc4"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:生产工具相关"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc5"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:WIFI测试工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc6"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:下载工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc7"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:写国家码工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc8"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:写码工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc9"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:天线耦合测试工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc10"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:工位检测与信息核对工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc11"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:数据库管理工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc12"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:整机电流测试工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc13"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:板级写码工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc14"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:校准工具"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qc15"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Qualcomm:综测工具"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+    <!-- mtk_phone -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/mtk_phone"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/mtk_phone"/>
+
+        <Button
+            android:id="@+id/mtk1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6580"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6735"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6750:TP904"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk4"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6750:TP910"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk5"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6750:TP912"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk6"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6753"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk7"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6755:TP902"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk8"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6755:TP902C南美版"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk9"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6755:TP903"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk10"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6755:TP903C南美版"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/mtk11"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MTK6757"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+    <!--  QC_Phone-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/qc_phone"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/qc_phone"/>
+
+        <Button
+            android:id="@+id/qcp1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MSM8209"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/qcp2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MSM8909:TP601"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/qcp3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MSM8909:TP802a"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/qcp4"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MSM8909:TP803a"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/qcp5"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MSM8909:TP803C"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/qcp6"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="MSM8909:TP804"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+    <!-- feedback -->
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/feedback"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/feedback"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+    <!--  rom-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rom"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/rom"/>
+
+        <TextView
+            android:id="@+id/rom20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="rom2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Calculator21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="计算器2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Camera21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Camera2.1"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/Clock21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="时钟2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Compass21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="指南针2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Dialtacts21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="通讯模块的电话和联系人相关功能"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Feedback21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="使用反馈2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Filemanager21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="文件管理2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/FM21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="FM2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/InternalFeedback21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="内部反馈2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Launcher21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="launcher2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Lock21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="锁屏和安全2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Messages21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="短信2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Notes21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="便签2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Settings21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Settings2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Soundrecorder21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="录音机2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/SystemUI21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="SystemUI2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/SystemUpdate21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="SystemUpdate2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Themes21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="主题2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Video21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="视频2.1"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Weather21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="天气2.1"
+            android:gravity="center"/>
+
+
+        <TextView
+            android:id="@+id/rom21"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="rom2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Calculator20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="计算器2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Calendar20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="日历2.0"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/Clock20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="时钟2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Compass20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="指南针2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Feedback20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="使用反馈2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Filemanager20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="文件管理2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Gallery20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="图库2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/InternalFeedback"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="内部反馈2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Launcher20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="launcher2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Messages20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="短信2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Music20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="音乐2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Notes20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="便签2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Soundrecorder20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="录音机2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Themes20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="主题2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Video20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="视频2.0"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Weather20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="天气2.0"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+    <!-- web-->
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/web"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/web"/>
+
+        <Button
+            android:id="@+id/filedist"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="FileDist"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/fota"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="FOTA"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/manage"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="ManagementSystem"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/ue"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="UEProject"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <!-- autotest-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/autotest"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/autotest"/>
+
+        <Button
+            android:id="@+id/QC"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="QualityCenter"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/testpecker"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="TestPecker"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <!-- test_c -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/test_c"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="test_c"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/QC"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="QualityCenter"
-        android:gravity="center"/>
-
-    <Button
-        android:id="@+id/testpecker"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="TestPecker"
-        android:gravity="center"/>
-
-    <Button
-        android:id="@+id/test_c"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="test_c"
-        android:gravity="center"
-        />
 
 
 </LinearLayout>
