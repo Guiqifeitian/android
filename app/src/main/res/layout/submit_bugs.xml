@@ -22,7 +22,8 @@
             android:text="Version"
             />
 
-        <EditText
+        <Spinner
+            android:id="@+id/version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -37,12 +38,14 @@
         android:orientation="horizontal">
 
         <TextView
+
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Module"
             />
 
         <Spinner
+            android:id="@+id/cf_module"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/modulelist"/>
@@ -55,12 +58,14 @@
         android:orientation="horizontal">
 
         <TextView
+
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Bug类别"
             />
 
         <Spinner
+            android:id="@+id/cf_bugcategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/buglist"/>
@@ -73,12 +78,14 @@
         android:orientation="horizontal">
 
         <TextView
+
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Summary"
             />
 
         <EditText
+            android:id="@+id/short_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="条件+异常+标准+概率+恢复"
@@ -98,6 +105,7 @@
             />
 
         <Spinner
+            android:id="@+id/bug_severity"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:entries="@array/severitylevel"
@@ -117,6 +125,7 @@
             />
 
         <Spinner
+            android:id="@+id/cf_reproduce"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:entries="@array/frequency"
@@ -158,6 +167,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_recovercondition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -177,7 +187,7 @@
             />
 
         <Spinner
-            android:id="@+id/testcase"
+            android:id="@+id/cf_testcase"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:entries="@array/testcases"
@@ -199,6 +209,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_casename"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="填写格式 A-001：用例名称"
@@ -218,6 +229,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_testtop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -232,10 +244,11 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="配测设备"
+            android:text="陪测设备"
             />
 
         <EditText
+            android:id="@+id/cf_accompanydevice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -254,6 +267,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_reproducesteps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -272,6 +286,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_testresult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -290,6 +305,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_expectresult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -309,6 +325,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_comparetest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -327,6 +344,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_problemproducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -345,6 +363,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_problemanalysis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -363,6 +382,7 @@
             />
 
         <Spinner
+            android:id="@+id/cf_testanalysis"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:entries="@array/testanalysis"
@@ -382,6 +402,7 @@
             />
 
         <EditText
+            android:id="@+id/cf_bugimpact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="对普通用户、特定用户、用户友好性的影响；对媒体评测的影响；对生产测试的影响"
@@ -401,6 +422,7 @@
         />
 
         <EditText
+            android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />

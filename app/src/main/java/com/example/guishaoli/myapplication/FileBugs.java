@@ -59,6 +59,7 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
         switch(v.getId()){
             case R.id.testpecker:
                 Intent intent1 = new Intent(FileBugs.this,SubmitBugs.class);
+                intent1.putExtra("cookie",cookie);
                 startActivity(intent1);
                 break;
             case R.id.test_proc:

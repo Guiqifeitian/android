@@ -37,8 +37,9 @@ public class FileUploader {
             conn.setConnectTimeout(TIME_OUT);
             conn.setRequestMethod("POST"); //请求方式
             conn.setRequestProperty("Charset", CHARSET);//设置编码
-            conn.setRequestProperty("connection", "keep-alive");
-            conn.setRequestProperty("cookie",cookie);
+            conn.setRequestProperty("Connection", "keep-alive");
+            conn.setRequestProperty("Cookie",cookie);
+            conn.setRequestProperty("Referer","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi");
             conn.setRequestProperty("Content-Type", CONTENT_TYPE + ";boundary=" + BOUNDARY);
             conn.setDoInput(true); //允许输入流
             conn.setDoOutput(true); //允许输出流
@@ -67,7 +68,7 @@ public class FileUploader {
                  * name里面的值为服务器端需要key 只有这个key 才可以得到对应的文件
                  * filename是文件的名字，包含后缀名的 比如:abc.png
                  */
-                sb.append("Content-Disposition: form-data; name=\"img\"; filename=\""+file.getName()+"\""+LINE_END);
+                sb.append("Content-Disposition: form-data; name=\"data\"; filename=\""+file.getName()+"\""+LINE_END);
                 sb.append("Content-Type: application/octet-stream; charset="+CHARSET+LINE_END);
                 sb.append(LINE_END);
                 //写入文件数据

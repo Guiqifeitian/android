@@ -44,7 +44,7 @@ public class SendUrlConnectionUtils {
             String params = "Bugzilla_login="+ URLEncoder.encode(username, "UTF-8")+"&Bugzilla_password="+URLEncoder.encode(password, "UTF-8")
                     +"&GoAheadAndLogIn="+URLEncoder.encode("Log+in", "UTF-8");
 
-            connection.setRequestMethod("POST");
+            connection.setRequestMethod("GET");
             connection.setConnectTimeout(8000);
             connection.setReadTimeout(8000);
             connection.setDoInput(true);

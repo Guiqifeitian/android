@@ -33,7 +33,7 @@
         <item>用例遗漏</item>
         <item>测试遗漏</item>
         <item>新测试的模块/功能</item>
-        <item>新引入的问题</item>
+        <item>新引入问题</item>
         <item>偶现问题</item>
         <item>需求或体验问题</item>
         <item>特殊操作或场景</item>
