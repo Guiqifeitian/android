@@ -206,6 +206,7 @@
         android:visibility="gone">
 
         <TextView
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="用例名称"
@@ -516,7 +517,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="huangguangxing@tp-link.com.cn, liangchuhua@tp-link.com.cn, xingzishuai@tp-link.com.cn, xuejinlong@tp-link.com.cn, yanjinjin@tp-link.com.cn"/>
+                android:text="huangguangxing@tp-link.com.cn,
+                liangchuhua@tp-link.com.cn, xingzishuai@tp-link.com.cn,
+                 xuejinlong@tp-link.com.cn, yanjinjin@tp-link.com.cn"/>
 
         </LinearLayout>
 

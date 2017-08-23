@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Bugzilla</string>
     <string name="charger">充电器</string>
     <string name="factory_tools">工具</string>
     <string name="mtk_phone">MTK_Phone</string>

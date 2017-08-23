@@ -1,12 +1,15 @@
 package com.example.guishaoli.bugzilla;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +32,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
+import java.security.PrivateKey;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -87,7 +91,9 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
     private EditText comment;
 
 
-    String[] res = {"appearance","audio","bluetooth","display","earphone","fm","gps","input","memory","multimedia","MVB","pm","reliability","RF","self_test","sensor","sim","software","Speaker","usb","wlan"};
+    String[] res = {"appearance","audio","bluetooth","display","earphone","fm",
+            "gps","input","memory","multimedia","MVB","pm","reliability",
+            "RF","self_test","sensor","sim","software","Speaker","usb","wlan"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,18 +150,8 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         attachment.setOnClickListener(this);
         submit.setOnClickListener(this);
 
-
-//        if(versionlist == null){
-//            Log.d("yes","it is true");
-//        }
-//        String[] arr = {"unspecified"};
-//      arr_adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, versionlist);
-//
-//        //arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//       version.setAdapter(arr_adapter);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,res);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,res);
         autoText.setAdapter(adapter);
 
         testCases.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -210,10 +206,24 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
                     chooseFile();
                     break;
                 case R.id.submit:
-                    if(filename == null){
-                        postFileWithParams(null,joinParams());
+                    if(testCases.getSelectedItem().equals("有")){
+                        if(!checkInput(cf_module) || !checkInput(cf_bugcategory) ||!checkInput(summary) || !checkInput(cf_casename)
+                                || !checkInput(cf_reproducesteps) || !checkInput(cf_testresult) || !checkInput(cf_expectresult)
+                                || !checkInput(cf_testanalysis) || !checkInput(cf_bugimpact)){
+                            new AlertDialog.Builder(SubmitBugs.this).setTitle("Alert").setMessage("红色选项必须输入内容").setPositiveButton("确定",null).show();
+                        }else{
+                            postFileWithParams(filename,joinParams());
+                        }
+                    }else if(testCases.getSelectedItem().equals("无")){
+                        if(!checkInput(cf_module) || !checkInput(cf_bugcategory) ||!checkInput(summary)
+                                || !checkInput(cf_reproducesteps) || !checkInput(cf_testresult) || !checkInput(cf_expectresult)
+                                || !checkInput(cf_testanalysis) || !checkInput(cf_bugimpact)){
+                            new AlertDialog.Builder(SubmitBugs.this).setTitle("Alert").setMessage("红色选项必须输入内容").setPositiveButton("确定",null).show();
+                        }else{
+                            postFileWithParams(filename,joinParams());
+                        }
                     }else{
-                        postFileWithParams(filename,joinParams());
+                        new AlertDialog.Builder(SubmitBugs.this).setTitle("Alert").setMessage("红色选项必须输入内容").setPositiveButton("确定",null).show();
                     }
                     break;
             }
@@ -241,6 +251,11 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
             Uri uri = data.getData();
             Log.i("file", "------->" + uri.getPath());
             filename = uri.getPath().toString();
+
+            //Looper.prepare();
+            Toast.makeText(SubmitBugs.this,"you choose file:"+filename,Toast.LENGTH_LONG).show();
+            //Looper.loop();
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -307,15 +322,19 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
 
                     FileUploader.upload("https://rdmobilebugzilla.tp-link.com.cn:8008/post_bug.cgi", null, map, new FileUploader.FileUploadListener() {
                         @Override
+                        public void onStart() {
+
+                        }
+
+                        @Override
                         public void onProgress(long pro, double precent) {
                             Log.i("cky", precent+"");
                         }
 
                         @Override
                         public void onFinish(int code, String res, Map<String, List<String>> headers) {
-                            Log.i("cky", res);
-
-                            if(res.charAt(0) == '<'){
+                            Log.i("cks", res);
+                            if(res.charAt(0) == '<' ){
                                 String title = HtmlParseUtils.getTitle(res);
                                 Looper.prepare();
                                 Toast.makeText(SubmitBugs.this,title,Toast.LENGTH_SHORT).show();
@@ -332,13 +351,23 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
 
                     FileUploader.upload("https://rdmobilebugzilla.tp-link.com.cn:8008/post_bug.cgi", new File(filename), map, new FileUploader.FileUploadListener() {
                         @Override
+                        public void onStart() {
+                        }
+
+                        @Override
                         public void onProgress(long pro, double precent) {
                             Log.i("cky", precent+"");
                         }
 
                         @Override
                         public void onFinish(int code, String res, Map<String, List<String>> headers) {
-                            Log.i("cky", res);
+                            Log.i("cks", res);
+                            if(res.charAt(0) == '<' ){
+                                String title = HtmlParseUtils.getTitle(res);
+                                Looper.prepare();
+                                Toast.makeText(SubmitBugs.this,title,Toast.LENGTH_SHORT).show();
+                                Looper.loop();
+                            }
                         }
                     },cookie);
                 }
@@ -348,9 +377,7 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    private void postParams(){
 
-    }
 
 
     private Handler handler = new Handler() {
@@ -474,7 +501,8 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
 
     private class MyTrustManager implements X509TrustManager {
         @Override
-        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+        public void checkClientTrusted(X509Certificate[] chain, String authType)
+                throws CertificateException {
 
         }
 
@@ -489,6 +517,21 @@ public class SubmitBugs extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+    private boolean checkInput(View v){
+        if(v instanceof Spinner){
+            if(((Spinner) v).getSelectedItem().toString().equals("---")){
 
+                return false;
+            }
+            return  true;
+        }else if(v instanceof EditText){
+            if(((EditText) v).getText().toString().trim().equals("")){
+                //new AlertDialog.Builder(SubmitBugs.this).setTitle("Alert").setMessage("红色选项必须输入内容").setPositiveButton("确定",null).show();
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
 
 }

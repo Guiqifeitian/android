@@ -27,7 +27,8 @@ public class FileUploader {
     private static final String PREFIX = "--";
     private static final String LINE_END = "\r\n";
 
-    public static void upload(String host, File file, Map<String,String> params, FileUploadListener listener,String cookie){
+    public static void upload(String host, File file, Map<String,String> params,
+                              FileUploadListener listener,String cookie){
         String BOUNDARY = UUID.randomUUID().toString(); //边界标识 随机生成 String PREFIX = "--" , LINE_END = "\r\n";
         String CONTENT_TYPE = "multipart/form-data"; //内容类型
         try {
@@ -85,6 +86,7 @@ public class FileUploader {
                     long totalbytes = file.length();
                     long curbytes = 0;
                     Log.i("cky", "total=" + totalbytes);
+                    listener.onStart();
                     int len = 0;
                     while ((len = is.read(bytes)) != -1) {
                         curbytes += len;
@@ -120,6 +122,7 @@ public class FileUploader {
     }
 
     public interface FileUploadListener{
+        public void onStart();
         public void onProgress(long pro,double precent);
         public void onFinish(int code,String res,Map<String,List<String>> headers);
     }

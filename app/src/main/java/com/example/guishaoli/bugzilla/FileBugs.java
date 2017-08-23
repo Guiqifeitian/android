@@ -1,6 +1,7 @@
 package com.example.guishaoli.bugzilla;
 
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -346,7 +347,9 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
         Weather20.setOnClickListener(this);
 
 
-        sendRequestWithHttpsURLConnection();
+        sendRequestWithHttpsURLConnection("https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi","","POST");
+
+        sendRequestWithHttpsURLConnection("https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?classification=__all","","GET");
 
     }
 
@@ -357,37 +360,9 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
         intent.putExtra("cookie",cookie);
         intent.putExtra("uri",buttonMaps.get(v.getId()));
         startActivity(intent);
-//        switch(v.getId()){
-//            case R.id.testpecker:
-//                Intent intent1 = new Intent(FileBugs.this,SubmitBugs.class);
-//                intent1.putExtra("cookie",cookie);
-//                intent1.putExtra("uri","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?product=TestPecker");
-//                startActivity(intent1);
-//                break;
-//            case R.id.test_c:
-//                Intent intent2 = new Intent(FileBugs.this,SubmitBugs.class);
-//                intent2.putExtra("cookie",cookie);
-//                intent2.putExtra("uri","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?sortation=test_c");
-//                startActivity(intent2);
-//                break;
-//            case R.id.fota:
-//                Intent intent3 = new Intent(this,SubmitBugs.class);
-//                intent3.putExtra("cookie",cookie);
-//                intent3.putExtra("uri","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?product=FOTA");
-//                startActivity(intent3);
-//                break;
-//            case R.id.QC:
-//                Intent intent4 = new Intent(this,SubmitBugs.class);
-//                intent4.putExtra("cookie",cookie);
-//                intent4.putExtra("uri","https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi?product=QualityCenter");
-//                startActivity(intent4);
-//                break;
-//            default:
-//                break;
-//        }
     }
 
-    private void sendRequestWithHttpsURLConnection(){
+    private void sendRequestWithHttpsURLConnection(final String uri,final String para,final String method){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -395,7 +370,7 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
                     BufferedReader reader = null;
                     try{
                         //https://rdmobilebugzilla.tp-link.com.cn:8008/
-                        URL url = new URL("https://rdmobilebugzilla.tp-link.com.cn:8008/enter_bug.cgi");
+                        URL url = new URL(uri);
                         SSLContext sc = SSLContext.getInstance("TLS");
                         sc.init(null,new TrustManager[]{new MyTrustManager()},new SecureRandom());
                         HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
@@ -407,7 +382,7 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
 
                         String params = "";
 
-                        connection.setRequestMethod("POST");
+                        connection.setRequestMethod(method);
                         connection.setConnectTimeout(8000);
                         connection.setReadTimeout(8000);
                         connection.setDoInput(true);
@@ -418,20 +393,20 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
                         out.flush();
                         out.close();
 
-                        List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
+//                        List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
 
-                        String sumcookie = "";
-                        if(!(cookies == null || cookies.isEmpty())){
-                            for(String cookie:cookies){
-                                if(sumcookie.isEmpty()){
-                                    sumcookie = cookie.split(";")[0];
-                                }else{
-                                    sumcookie += ";"+cookie.split(";")[0];
-                                }
-                                Log.d("mcookie",cookie.split(";")[0]);
-                            }
-                            Log.d("cookie",sumcookie);
-                        }
+//                        String sumcookie = "";
+//                        if(!(cookies == null || cookies.isEmpty())){
+//                            for(String cookie:cookies){
+//                                if(sumcookie.isEmpty()){
+//                                    sumcookie = cookie.split(";")[0];
+//                                }else{
+//                                    sumcookie += ";"+cookie.split(";")[0];
+//                                }
+//                                Log.d("mcookie",cookie.split(";")[0]);
+//                            }
+//                            Log.d("cookie",sumcookie);
+//                        }
 
                         InputStream in = connection.getInputStream();
 
@@ -472,10 +447,16 @@ public class FileBugs extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void fileBugResult(String response){
-        ArrayList<String> bugzillabody = HtmlParseUtils.getBugItems(response);
-        for(int i = 0;i<bugzillabody.size();i++){
-            Log.d(String.valueOf(i),bugzillabody.get(i));
+//        ArrayList<String> bugzillabody = HtmlParseUtils.getBugItems(response);
+//        for(int i = 0;i<bugzillabody.size();i++){
+//            Log.d(String.valueOf(i),bugzillabody.get(i));
+//        }
+        ArrayList<String> urls = HtmlParseUtils.getUrls(response);
+        int i =0;
+        for(String each:urls){
+            Log.d("url",each);
         }
+
     }
 
     private class MyHostnameVerifier implements HostnameVerifier {

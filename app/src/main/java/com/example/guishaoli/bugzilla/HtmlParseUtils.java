@@ -53,7 +53,9 @@ public class HtmlParseUtils {
     }
 
     public static String getComponent(String str) {
-        String pattern = "<select\\s+name..component.\\s+id..component.\\s+size..7.\\s+onchange..set_assign_to....>\\s+<option\\s+value..(\\w+)\"\\s+id";
+        String pattern = "<select\\s+name..component.\\s" +
+                "+id..component.\\s+size..7.\\s+" +
+                "onchange..set_assign_to....>\\s+<option\\s+value..(\\w+)\"\\s+id";
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(str);
         if (m.find()) {
@@ -90,6 +92,18 @@ public class HtmlParseUtils {
             return "error";
         }
 
+    }
+
+    public static ArrayList<String> getUrls(String html){
+        Document doc = Jsoup.parse(html);
+        Element div = doc.getElementById("bugzilla-body");
+        Elements urls = div.select("a");
+        ArrayList<String> uris = new ArrayList<String>();
+
+        for(Element each:urls){
+            uris.add(each.attr("href"));
+        }
+        return uris;
     }
 
 }

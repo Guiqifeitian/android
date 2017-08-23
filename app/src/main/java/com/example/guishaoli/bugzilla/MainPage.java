@@ -87,7 +87,8 @@ public class MainPage extends AppCompatActivity {
                     connection.setRequestProperty("Connection","keep-alive");
                     connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
 
-                    String params = "Bugzilla_login="+ URLEncoder.encode(username, "UTF-8")+"&Bugzilla_password="+URLEncoder.encode(password, "UTF-8")
+                    String params = "Bugzilla_login="+ URLEncoder.encode(username, "UTF-8")
+                            +"&Bugzilla_password="+URLEncoder.encode(password, "UTF-8")
                             +"&GoAheadAndLogIn="+URLEncoder.encode("Log+in", "UTF-8");
 
                     connection.setRequestMethod("POST");
@@ -179,12 +180,14 @@ public class MainPage extends AppCompatActivity {
 
     private class MyTrustManager implements X509TrustManager{
         @Override
-        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+        public void checkClientTrusted(X509Certificate[] chain, String authType)
+                throws CertificateException {
 
         }
 
         @Override
-        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+        public void checkServerTrusted(X509Certificate[] chain, String authType)
+                throws CertificateException {
 
         }
 
